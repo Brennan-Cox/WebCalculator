@@ -26,7 +26,7 @@ function verifyParens(expression) {
 }
 
 function verifyOperators(expression) {
-    operators = ['+', '-', '*', '/', '^'];
+    operators = ['+', '-', '*', '/', '^', '%'];
     for (i = 0; i < expression.length; i++) {
         if (operators.includes(expression[i])) {
             if ((i == 0 && expression[0] != '-') || i == expression.length - 1) {
@@ -94,20 +94,24 @@ function evaluate(expression) {
         console.log(expression)
     }
     //evaluate all multiplication and division expressions
-    while (expression.includes('*') || expression.includes('/')) {
+    while (expression.includes('*') || expression.includes('/') || expression.includes('%')) {
         console.log(expression)
         firstMultiply = expression.indexOf('*');
         firstMultiply = firstMultiply == -1 ? Infinity : firstMultiply;
         firstDivide = expression.indexOf('/');
         firstDivide = firstDivide == -1 ? Infinity : firstDivide;
-        start = Math.min(firstMultiply, firstDivide);
+        firstMod = expression.indexOf('%');
+        firstMod = firstMod == -1 ? Infinity : firstMod;
+        start = Math.min(firstMultiply, Math.min(firstDivide, firstMod));
         lr = leftRight(expression, start);
         left = lr[0];
         right = lr[1];
         leftString = Number(expression.substring(left, start));
         rightString = Number(expression.substring(start + 1, right));
         console.log(leftString, rightString)
-        subExpression = expression[start] == '*' ? leftString * rightString : leftString / rightString;
+        subExpression = expression[start] == '*' ? leftString * rightString : 
+                        expression[start] == '/' ? leftString / rightString : 
+                        leftString % rightString;
         expression = expression.substring(0, left) + subExpression + expression.substring(right);
         console.log(expression)
     }
