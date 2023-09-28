@@ -5,6 +5,9 @@ function calculate() {
     expression = expressionBox.value
     expression = evaluateExpression(expression);
     resultBox.innerHTML = expression;
+    if (resultBox.innerHTML == "") {
+        clear()
+    }
 }
 
 function verifyParens(expression) {
@@ -164,5 +167,6 @@ function evaluateExpression(expression) {
 }
 
 function clear() {
-    resultBox.innerHTML = '';
+    resultBox.innerHTML = "awaiting input";
+    expressionBox.value = '';
 }

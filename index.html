@@ -9,7 +9,7 @@
     <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
 </head>
 
-<body style="background-color: #a584b5; width: auto;">
+<body>
     <div class="container">
         <div class="row">
             <div class="section">
@@ -21,9 +21,9 @@
                             placeholder="Enter expression" onkeyup="calculate()" autocomplete="off">
                     </div>
                     <hr>
-                    <p class="output" id="result">output</p>
+                    <p class="output" id="result">awaiting input...</p>
                     <hr>
-                    <input type="reset" value="Reset" class="button">
+                    <button id="clearbutton" onclick="clear()" class="button">Clear</button>
                 </form>
             </div>
         </div>

@@ -1,4 +1,4 @@
-/* container */
+/* container put border around container for calculator*/
 .container {
   width: 100%;
   height: 100%;
@@ -8,6 +8,7 @@
   justify-content: center;
   border-radius: 1rem;
   border-color: #000;
+  border-width: 1rem;
   text-align: center;
 }
 
@@ -69,4 +70,12 @@
 .button:hover {
     background-color: #494778;
     color: #000;
+}
+
+body {
+    background-color: #494778;
+    color: #fff;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    font-size: x-large;
 }
